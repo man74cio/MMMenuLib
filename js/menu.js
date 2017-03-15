@@ -2,7 +2,9 @@
 
 (function(exports){
 
-  /* Containet for all Menus */
+
+
+  /*  for all Menus */
   var MMMenu = [];
 
 
@@ -11,10 +13,7 @@
       container_base = MMMname + '_main_',
       closingDiv_base = MMMname + '_div_',
       title_base = MMMname + '_a_',
-      button_base = MMMname + '_caret_',
-      upSymbol = '-',
-      downSymbol = '+'
-
+      button_base = MMMname + '_caret_'
   ;
 
   var NameSet = function(name){
@@ -39,14 +38,17 @@
 
 
     var _memId = closingDiv_id+'_status',
-	_status = localStorage.getItem(_memId);
+	_status = localStorage.getItem(_memId)
+    ;
 
-    var _ele, _caret, _cascade = true;
+    var _ele, _caret;
+
+    options = options || {};
+    var _cascade = options['cascade'] || true ,
+	_upSymbol = options['upSymbol'] || '-' ,
+	_downSymbol = options['downSymbol'] || '+' ;
 
 
-    if(options){
-      _cascade = options['cascade'] | true;
-    }
 
     _status = (_status==='open') ? 'open' :'closed';
 
@@ -57,7 +59,7 @@
       _ele.style.display = 'none';
       document.getElementById(title_id).onclick = that.flipmenu;
       _caret = document.getElementById(button_id);
-      _caret.innerHTML = downSymbol;
+      _caret.innerHTML = _downSymbol;
       if(_status==='open'){that.open(); }
 
       return this;
@@ -67,19 +69,17 @@
       waittime = waittime | 0;
       setTimeout(
 	function(){
-	  // _ele.style.visibility = 'hidden';
-	  //_caret.className = _caret.className.replace(upSymbol,downSymbol);
-	  _caret.innerHTML = downSymbol;
+	  _caret.innerHTML = _downSymbol;
 	  _ele.style.display = 'none';
 	}, waittime);
-      // if(_cascade){
-
-      // 	var childs = document.getElementById(closingDiv_id).getElementsByClassName(MMMname);
-      // 	for(var ii=0; ii<childs.length; ii++){
-      // 	  var locid = childs[ii].id;
-      // 	  MMMenu[locid[locid.length-1]].close();
-      // 	}
-      // }
+      if(_cascade){
+	console.log(_cascade,MMMname,closingDiv_id)
+      	var childs = document.getElementById(closingDiv_id).getElementsByClassName(MMMname);
+      	for(var ii=0; ii<childs.length; ii++){
+      	  var locid = childs[ii].id;
+      	  MMMenu[locid[locid.length-1]].close();
+      	}
+      }
       _status = 'closed';
     };
 
@@ -87,9 +87,7 @@
       waittime = waittime | 0;
       setTimeout(
 	function(){
-	  // _ele.style.visibility = 'visible';
-	  // _caret.className = _caret.className.replace(downSymbol,upSymbol);
-	  _caret.innerHTML = upSymbol;
+	  _caret.innerHTML = _upSymbol;
 	  _ele.style.display = 'block';
 	},waittime);
       _status = 'open';
@@ -114,12 +112,7 @@
       switch(ii){
       case 'name':
 	NameSet(options[ii]); break;
-      case 'upSymbol':
-	upSymbol = options[ii]; break;
-      case 'downSymbol':
-	downSymbol = options[ii]; break;
       }
-
     }
 
     var menus = document.getElementsByClassName(MMMname);
@@ -148,9 +141,8 @@
 	  console.log('oulala!');
 	}
       }
+      MMMenu.push(new DropFuncClass(imenu,options).init());
 
-      MMMenu.push(new DropFuncClass(imenu).init());
-      console.log(MMMenu[imenu])
     }
 
   };
