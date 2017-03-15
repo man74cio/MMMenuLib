@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Menu exemple</title>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="lib/css/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="lib/css/font-awesome-4.6.3/css/font-awesome.min.css"> -->
 
     <link rel="stylesheet" type="text/css" href="css/menu.css" />
     <link rel="stylesheet" type="text/css" href="lib/css/w3.css" />
@@ -111,9 +111,9 @@
       (function() {
       // your page initialization code here
       // the DOM will be available here
-      MMMenuLib.CreateMenus();
+      new MMMenuLib.MMMenuClass();
 
-      MMMenuLib.CreateMenus({name:'MMMenuOther',
+      new MMMenuLib.MMMenuClass({name:'MMMenuOther',
                              upSymbol: '<i class="fa fa-caret-up"></i>',
                              downSymbol:'<i class="fa fa-caret-down"></i>'
                             });
