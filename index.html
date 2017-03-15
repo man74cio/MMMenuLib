@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Menu exemple</title>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="lib/css/font-awesome-4.6.3/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/w3.css" />
+    <script src="js/menu.js"></script>
+
+
+  </head>
+
+  <body>
+    <div>
+      <h3>Basic Menu</h3>
+
+      <div class="MMMenu" >
+	<a  href="#">menutitle
+	  <i></i>
+	</a>
+	<div >
+	  <a href="#">first</a>
+	  <a href="#">second</a>
+	  <a href="#">third</a>
+	</div>
+      </div>
+    </div>
+    <div>
+      <h3>Nested Menu </h3>
+
+      <div class="MMMenu" >
+	<a  href="#">level 0
+	  <i>+</i>
+	</a>
+	<div>
+	  <a href="#">A-1</a>
+	  <div class="MMMenu" >
+	    <a  href="#">B-1
+	      <i>+</i>
+	    </a>
+	    <div >
+	      <a href="#">A-2</a>
+	      <a href="#">B-2</a>
+	      <a href="#">C-2</a>
+	    </div>
+	  </div>
+
+	  <div class="MMMenu" >
+	    <a  href="#">C-1
+	      <i>+</i>
+	    </a>
+	    <div >
+	      <a href="#">D-2</a>
+	      <a href="#">E-2</a>
+	      <a href="#">F-2</a>
+	    </div>
+	  </div>
+
+	  <a href="#">D-1</a>
+	</div>
+      </div>
+
+
+      <div>
+	<h3>Nested Menu With w3.css</h3>
+	<div id="menu" class="w3-sidenav w3-theme-d5">
+
+
+	  <div class="w3-accordion MMMenuOther" >
+	    <a  href="#">level 0
+	      <i class="w3-right">+</i>
+	    </a>
+	    <div class="w3-theme-d3">
+	      <a href="#">A-1</a>
+	      <div class="w3-accordion MMMenuOther" >
+		<a  href="#">B-1
+		  <i class="w3-right">+</i>
+		</a>
+		<div class="w3-theme-d2">
+		  <a href="#">A-2</a>
+		  <a href="#">B-2</a>
+		  <a href="#">C-2</a>
+		</div>
+	      </div>
+
+	      <div class="w3-accordion MMMenuOther" >
+		<a  href="#">C-1
+		  <i class="w3-right">+</i>
+		</a>
+		<div class="w3-theme-d2" >
+		  <a href="#">D-2</a>
+		  <a href="#">E-2</a>
+		  <a href="#">F-2</a>
+		</div>
+	      </div>
+
+	      <a href="#">D-1</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+
+    <script>
+      // self executing function here
+      (function() {
+      // your page initialization code here
+      // the DOM will be available here
+      MMMenuLib.CreateMenus();
+
+      MMMenuLib.CreateMenus({name:'MMMenuOther',
+                             upSymbol: '<i class="fa fa-caret-up"></i>',
+                             downSymbol:'<i class="fa fa-caret-down"></i>'
+                            });
+      document.getElementById("menu").style.display = "block";
+
+      })();
+    </script>
+
+  </body>
+</html>
